@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- DataTable -->
   <link rel="stylesheet" type="text/css"
-    href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.23/b-1.6.5/b-html5-1.6.5/r-2.2.6/datatables.min.css" />
+    href="https://cdn.datatables.net/v/bs4/dt-1.10.23/b-1.6.5/b-html5-1.6.5/r-2.2.6/datatables.min.css" />
+
+
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -20,6 +22,7 @@
     <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
       <thead>
         <tr>
+          <th></th>
           <th>First name</th>
           <th>Last name</th>
           <th>Position</th>
@@ -33,6 +36,7 @@
       </thead>
       <tbody>
         <tr>
+          <td></td>
           <td>Tiger</td>
           <td>Nixon</td>
           <td>System Architect</td>
@@ -55,22 +59,24 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
   integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <!-- DataTable -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
 <script type="text/javascript"
-  src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.23/b-1.6.5/b-html5-1.6.5/r-2.2.6/datatables.min.js">
-</script>
+  src="https://cdn.datatables.net/v/bs4/dt-1.10.23/b-1.6.5/b-html5-1.6.5/r-2.2.6/datatables.min.js"></script>
+
 
 <script>
   $(document).ready(function () {
     $('#example').DataTable({
-      dom: 'Bfrtip',
-      buttons: [
-        'copyHtml5',
-        'excelHtml5',
-        'csvHtml5',
-        'pdfHtml5'
-      ]
+      responsive: {
+        details: {
+          type: 'column'
+        }
+      },
+      columnDefs: [{
+        className: 'dtr-control',
+        orderable: false,
+        targets: 0
+      }],
+      order: [1, 'asc']
     });
   });
 </script>
